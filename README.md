@@ -21,6 +21,9 @@ Place the `PervasiveDisplays_Library` folder on the `Libraries` folder of the sk
 
 ### Licence
 
-![image](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+This work is licensed under 
+
+* **© Rei Vilo, 2010-2016, All rights reserved** for professionals _or_ organisations _or_ for commercial use. 
+
+* ![image](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) for hobbyists _and_ for personal use.
