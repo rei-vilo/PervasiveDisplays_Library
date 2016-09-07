@@ -3,7 +3,7 @@
     ----------------------------------
     Developed with embedXcode
 
-    Project LCD_protocol100
+    Project LCD_screen Library Suite
     (c) Rei VILO, 2010-2016 - SPECIAL EDITION FOR ENERGIA
     All rights reserved
 

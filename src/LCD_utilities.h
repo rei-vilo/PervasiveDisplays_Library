@@ -22,23 +22,12 @@
 /// @n  For any enquiry about license, http://embeddedcomputing.weebly.com/contact
 ///
 /// @seeReadMe.txt for references
-#if defined(MPIDE)
-#include "WProgram.h"
-#elif defined(DIGISPARK)
-#include "Arduino.h"
-#elif defined(ENERGIA)
+// Core library - IDE-based
+#if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
 #include "Energia.h"
-#elif defined(MAPLE_IDE)
-#include "WProgram.h"
-#elif defined(CORE_TEENSY)
-#include "WProgram.h"
-#elif defined(WIRING)
-#include "Wiring.h"
-#elif defined(ARDUINO) && (ARDUINO >= 100)
-#include "Arduino.h"
-#elif defined(ARDUINO) && (ARDUINO < 100)
-#include "WProgram.h"
-#endif
+#else
+#error Paltform not supported
+#endif // end IDE
 
 #include "stdarg.h"
 #include "stdio.h"

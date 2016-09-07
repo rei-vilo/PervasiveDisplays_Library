@@ -7,8 +7,8 @@
 ///
 /// @author		Rei VILO
 /// @author		http://embeddedcomputing.weebly.com
-/// @date		Sep 01, 2016
-/// @version	108
+/// @date		Sep 07, 2016
+/// @version	109
 ///
 /// @copyright  (c) Rei VILO, 2010-2016 - SPECIAL EDITION FOR ENERGIA
 /// @copyright	All rights reserved
@@ -26,20 +26,11 @@
 
 
 // Core library - IDE-based
-#if defined(MPIDE) // chipKIT specific
-#include "WProgram.h"
-#elif defined(DIGISPARK) // Digispark specific
-#include "Arduino.h"
-#elif defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
+// Core library - IDE-based
+#if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
 #include "Energia.h"
-#elif defined(MAPLE_IDE) // Maple specific
-#include "WProgram.h"
-#elif defined(CORE_TEENSY) // Teensy specific
-#include "WProgram.h"
-#elif defined(WIRING) // Wiring specific
-#include "Wiring.h"
-#elif defined(ARDUINO) // Arduino 1.0x and 1.5x specific
-#include "Arduino.h"
+#else
+#error Paltform not supported
 #endif // end IDE
 
 #ifndef Screen_EPD_RELEASE
