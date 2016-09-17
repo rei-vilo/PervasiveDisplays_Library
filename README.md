@@ -17,7 +17,21 @@ General documentation is available at [LCD_screen Library Suite](http://embedded
 
 ### Installation
 
-Place the `PervasiveDisplays_Library` folder on the `Libraries` folder of the sketchbook.
+Two options.
+
+##### Using the Boards Manager (recommended)
+
+* Launch Energia 1.6.10E18.
+* Call the menu **Sketck > Include Library > Manage Libraires...**
+* Select the library and click on **Install**.
+
+![image](https://github.com/rei-vilo/PervasiveDisplays_Library/Libraries.png)
+
+##### Using the ZIP file
+
+* Download the ZIP file.
+* Uncompress it.
+* Place the resulting `PervasiveDisplays_Library` folder on the `Libraries` folder of the sketchbook.
 
 ### Licence
 
