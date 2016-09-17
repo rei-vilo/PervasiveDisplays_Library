@@ -25,7 +25,7 @@ Two options.
 * Call the menu **Sketck > Include Library > Manage Libraires...**
 * Select the library and click on **Install**.
 
-![image](https://github.com/rei-vilo/PervasiveDisplays_Library/Libraries.png)
+![image](https://github.com/rei-vilo/PervasiveDisplays_Library/blob/master/Libraries.png)
 
 ##### Using the ZIP file
 
