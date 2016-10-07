@@ -9,7 +9,7 @@
 /// @author		Rei VILO
 /// @author		http://embeddedcomputing.weebly.com
 /// @date		Jun 28, 2016
-/// @version	107
+/// @version	120
 ///
 /// @copyright  (c) Rei VILO, 2010-2016 - SPECIAL EDITION FOR ENERGIA
 /// @copyright	All rights reserved
@@ -20,7 +20,7 @@
 
 
 ///
-/// @file		PervasiveDisplays.ino
+/// @file		PervasiveDisplays_Demo.ino
 /// @brief		Main sketch
 ///
 /// @details	<#details#>
@@ -29,7 +29,7 @@
 /// @author		Rei VILO
 /// @author		http://embeddedcomputing.weebly.com
 /// @date		Jun 28, 2016
-/// @version	107
+/// @version	120
 ///
 /// @copyright  (c) Rei VILO, 2010-2016 - SPECIAL EDITION FOR ENERGIA
 /// @copyright	All rights reserved
@@ -55,6 +55,9 @@
 #include "Pervasive_EPD_BoosterPack2.h"
 #include "Screen_EPD.h"
 
+//#if Screen_EPD_RELEASE < 120
+//#error Required Screen_EPD_RELEASE 120
+//#endif
 
 // Define structures and classes
 
@@ -75,6 +78,8 @@ Screen_EPD myScreen(eScreen_EPD_eTC_271_Mb);    // ok
 // . switches = 0101 010x
 //Screen_EPD myScreen(eScreen_EPD_iTC_287);       // ok
 //Screen_EPD myScreen(eScreen_EPD_iTC_420);       // ok
+//Screen_EPD myScreen(eScreen_EPD_iTC_287_BWR);       // ok
+//Screen_EPD myScreen(eScreen_EPD_iTC_420_BWR);       // ok
 
 
 // Prototypes

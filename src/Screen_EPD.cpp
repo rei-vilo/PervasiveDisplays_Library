@@ -28,6 +28,7 @@ Screen_EPD::Screen_EPD(eScreen_EPD_t eScreen)
     _flagBeginDone = false;
     _eScreen = eScreen;
 
+    // Screen width and height
     switch (_eScreen)
     {
         case eScreen_EPD_eTC_144_Mb:
@@ -67,12 +68,14 @@ Screen_EPD::Screen_EPD(eScreen_EPD_t eScreen)
             break;
 
         case eScreen_EPD_iTC_287:
+        case eScreen_EPD_iTC_287_BWR:
 
             _widthScreen =  296 ; // x = wide size
             _heightScreen = 128; // y = small size
             break;
 
         case eScreen_EPD_iTC_420:
+        case eScreen_EPD_iTC_420_BWR:
 
             _widthScreen =  300 ; // x = wide size
             _heightScreen = 400; // y = small size
@@ -83,9 +86,24 @@ Screen_EPD::Screen_EPD(eScreen_EPD_t eScreen)
             break;
     }
 
+    // Buffer depth. BWR requires 2 buffers.
+    switch (_eScreen)
+    {
+        case eScreen_EPD_iTC_287_BWR:
+        case eScreen_EPD_iTC_420_BWR:
+
+            _depthBuffer = 2;
+            break;
+
+        default:
+
+            _depthBuffer = 1;
+            break;
+    }
+
     _widthBuffer = _widthScreen; // x = wide size
     _heightBuffer = _heightScreen / 8; // 112 / 8;
-    _sizeBuffer = _widthBuffer * _heightBuffer;
+    _sizeBuffer = _widthBuffer * _heightBuffer; // actually, size for one buffer. BWR requires 2 buffers.
 }
 
 void Screen_EPD::begin()
@@ -95,8 +113,8 @@ void Screen_EPD::begin()
     // Framebuffer initialisation
     if (!_flagBeginDone)
     {
-        uint8_t * _newFrameBuffer = new uint8_t[_sizeBuffer];
-        uint8_t * _oldFrameBuffer = new uint8_t[_sizeBuffer];
+        uint8_t * _newFrameBuffer = new uint8_t[_sizeBuffer * _depthBuffer];
+        uint8_t * _oldFrameBuffer = new uint8_t[_sizeBuffer * _depthBuffer];
         _flagBeginDone = true;
 
         _oldImage = (uint8_t *) _oldFrameBuffer;
@@ -149,6 +167,16 @@ void Screen_EPD::begin()
             _result = _pdi_epd.begin(dr_iTC_Drivers, EPD_420_BW, USE_Temperature_Sensor);
             break;
 
+        case eScreen_EPD_iTC_287_BWR:
+
+            _result = _pdi_epd.begin(dr_iTC_Drivers, EPD_287_BWR, USE_Temperature_Sensor);
+            break;
+
+        case eScreen_EPD_iTC_420_BWR:
+
+            _result = _pdi_epd.begin(dr_iTC_Drivers, EPD_420_BWR, USE_Temperature_Sensor);
+            break;
+
         default:
             Serial.println(". begin");
             break;
@@ -175,6 +203,16 @@ void Screen_EPD::flush()
     _result = _pdi_epd.EPD_display_GU_from_pointer(_oldImage, _newImage);
     memcpy(_oldImage, _newImage, _sizeBuffer);
 }
+
+//void Screen_EPD::setActivePage(uint8_t page)
+//{
+//    _page = (page % 2);
+//}
+//
+//void Screen_EPD::copyPageFromTo(uint8_t fromPage, uint8_t toPage)
+//{
+//
+//}
 
 void Screen_EPD::clear(uint16_t colour)
 {
@@ -232,7 +270,40 @@ void Screen_EPD::clear(uint16_t colour)
             }
             break;
 
+        case eScreen_EPD_iTC_287_BWR:
+        case eScreen_EPD_iTC_420_BWR:
+
+            if (colour == redColour)
+            {
+                memset(_newImage, 0x00, _sizeBuffer);
+                memset(_newImage + _sizeBuffer, 0xff, _sizeBuffer);
+            }
+            else if (colour == greyColour)
+            {
+                for (uint8_t i = 0; i < _widthBuffer; i++)
+                {
+                    uint16_t pattern = (i % 2) ? 0b10101010 : 0b01010101;
+                    for (uint8_t j = 0; j < _heightBuffer; j++)
+                    {
+                        _newImage[i * _heightBuffer + j] = pattern;
+                    }
+                }
+                memset(_newImage + _sizeBuffer, 0x00, _sizeBuffer);
+            }
+            else if ((colour != whiteColour) xor _invert)
+            {
+                memset(_newImage, 0xff, _sizeBuffer);
+                memset(_newImage + _sizeBuffer, 0x00, _sizeBuffer);
+            }
+            else
+            {
+                memset(_newImage, 0x00, _sizeBuffer);
+                memset(_newImage + _sizeBuffer, 0x00, _sizeBuffer);
+            }
+            break;
+
         default:
+
             Serial.println(". clear");
             break;
     }
@@ -280,6 +351,16 @@ String Screen_EPD::WhoAmI()
         case eScreen_EPD_iTC_420:
 
             return "iTC 4.20\"";
+            break;
+
+        case eScreen_EPD_iTC_287_BWR:
+
+            return "iTC 2.87\" BWR";
+            break;
+
+        case eScreen_EPD_iTC_420_BWR:
+
+            return "iTC 4.20\" BWR";
             break;
 
         default:
@@ -379,7 +460,29 @@ void Screen_EPD::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
             }
             break;
 
+        case eScreen_EPD_iTC_287_BWR:
+        case eScreen_EPD_iTC_420_BWR:
+
+            if ((colour == redColour))
+            {
+                bitClear(_newImage[x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+                bitSet(_newImage[_sizeBuffer + x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+            }
+            else if ((colour != whiteColour) xor _invert)
+            {
+                bitSet(_newImage[x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+                bitClear(_newImage[_sizeBuffer + x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+            }
+            else
+            {
+                bitClear(_newImage[x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+                bitClear(_newImage[_sizeBuffer + x1 * _heightBuffer + (y1 >> 3)], 7 - (y1 % 8));
+            }
+            break;
+
+
         default:
+
             Serial.println(". _setPoint");
             break;
     }

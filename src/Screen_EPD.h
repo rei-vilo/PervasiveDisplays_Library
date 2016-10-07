@@ -7,8 +7,8 @@
 ///
 /// @author		Rei VILO
 /// @author		http://embeddedcomputing.weebly.com
-/// @date		Sep 07, 2016
-/// @version	109
+/// @date		Oct 06, 2016
+/// @version	120
 ///
 /// @copyright  (c) Rei VILO, 2010-2016 - SPECIAL EDITION FOR ENERGIA
 /// @copyright	All rights reserved
@@ -26,7 +26,6 @@
 
 
 // Core library - IDE-based
-// Core library - IDE-based
 #if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
 #include "Energia.h"
 #else
@@ -37,7 +36,7 @@
 ///
 /// @brief	Library release number
 ///
-#define Screen_EPD_RELEASE 107
+#define Screen_EPD_RELEASE 120
 
 // Other libraries
 #include "LCD_screen_buffer.h"
@@ -62,6 +61,9 @@ enum eScreen_EPD_t
     eScreen_EPD_iTC_215, ///< eScreen_EPD_iTC_215
     eScreen_EPD_iTC_287, ///< eScreen_EPD_iTC_287
     eScreen_EPD_iTC_420, ///< eScreen_EPD_iTC_420
+
+    eScreen_EPD_iTC_287_BWR, ///< eScreen_EPD_iTC_287_BWR
+    eScreen_EPD_iTC_420_BWR, ///< eScreen_EPD_iTC_420_BWR
 };
 
 
@@ -84,6 +86,17 @@ enum eScreen_EPD_t
 ///
 /// *   iTC 287   switches = 0101 010x    http://www.pervasivedisplays.com/products/287
 /// *   iTC 420   switches = 0101 010x    http://www.pervasivedisplays.com/products/420
+///
+/// *   iTC 287 BWR   switches = 0101 010x    http://www.pervasivedisplays.com/products/287
+/// *   iTC 420 BWR   switches = 0101 010x    http://www.pervasivedisplays.com/products/420
+///
+
+
+///
+/// @brief      Class for Pervasive Displays screens
+/// @details    Screen controllers
+/// *   LCD: propietary, SPI
+/// *   touch: no touch
 ///
 class Screen_EPD : public LCD_screen_buffer
 {
@@ -126,6 +139,7 @@ class Screen_EPD : public LCD_screen_buffer
     ///
     uint8_t getResult();
 
+/// @cond
   private:
     // * Virtual =0 compulsory functions
     // Orientation
@@ -151,10 +165,11 @@ class Screen_EPD : public LCD_screen_buffer
     uint8_t _result;
     bool _flagBeginDone;
 
-    uint16_t _widthBuffer, _heightBuffer;
+    uint16_t _widthBuffer, _heightBuffer, _depthBuffer;
     uint32_t _sizeBuffer;
-    uint16_t _widthScreen, _heightScreen;
+    uint16_t _widthScreen, _heightScreen, _depthScreen;
     eScreen_EPD_t _eScreen;
 };
+/// @endcond
 
 #endif

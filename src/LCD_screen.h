@@ -26,7 +26,7 @@
 #if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
 #include "Energia.h"
 #else
-#error Paltform not supported
+#error Platform not supported
 #endif // end IDE
 
 #ifndef LCD_SCREEN_RELEASE

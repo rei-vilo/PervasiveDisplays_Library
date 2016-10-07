@@ -92,15 +92,6 @@ class LCD_screen_buffer : public LCD_screen
     /// @name	Graphics
     /// @{
 
-//    ///
-//    /// @brief	Draw circle
-//    /// @param	x0 center, point coordinate, x-axis
-//    /// @param	y0 center, point coordinate, y-axis
-//    /// @param	radius radius
-//    /// @param	colour 16-bit colour
-//    ///
-//    virtual void circle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_t colour);
-
     ///
     /// @brief	Draw line, rectangle coordinates
     /// @param	x1 top left coordinate, x-axis
@@ -110,12 +101,6 @@ class LCD_screen_buffer : public LCD_screen
     /// @param	colour 16-bit colour
     ///
     virtual void line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t colour);
-
-//    ///
-//    /// @brief	Set pen opaque
-//    /// @param	flag default = true = opaque = solid, false = wire frame
-//    ///
-//    virtual void setPenSolid(bool flag = true);
 
     ///
     /// @brief	Draw rectangle, rectangle coordinates
