@@ -82,7 +82,7 @@ Screen_EPD::Screen_EPD(eScreen_EPD_t eScreen)
             break;
 
         default:
-            Serial.println(". Screen_EPD");
+
             break;
     }
 
@@ -178,7 +178,7 @@ void Screen_EPD::begin()
             break;
 
         default:
-            Serial.println(". begin");
+
             break;
     }
 
@@ -304,7 +304,6 @@ void Screen_EPD::clear(uint16_t colour)
 
         default:
 
-            Serial.println(". clear");
             break;
     }
 }
@@ -483,7 +482,6 @@ void Screen_EPD::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
 
         default:
 
-            Serial.println(". _setPoint");
             break;
     }
 }
