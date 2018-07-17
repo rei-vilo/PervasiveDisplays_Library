@@ -13,6 +13,8 @@ The library requires the **Pervasive_EPD_BoosterPack2** library.
 
 ### Supported Screens
 
+Screen | Pixels | Switches | Product Page
+---- | ---- | ---- | ----
 eTC 144 | 96 x 128 | `0000 001x` | http://www.pervasivedisplays.com/products/144
 eTC 200 | 96 x 200 | 0000 001x` | http://www.pervasivedisplays.com/products/200
 eTC 190 | 128 x 144 | `0000 000x` | http://www.pervasivedisplays.com/products/190
