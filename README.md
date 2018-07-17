@@ -16,12 +16,12 @@ The library requires the **Pervasive_EPD_BoosterPack2** library.
 Screen | Pixels | Switches | Product Page
 ---- | ---- | ---- | ----
 eTC 144 | 96 x 128 | `0000 001x` | http://www.pervasivedisplays.com/products/144
-eTC 200 | 96 x 200 | 0000 001x` | http://www.pervasivedisplays.com/products/200
+eTC 200 | 96 x 200 | `0000 001x` | http://www.pervasivedisplays.com/products/200
 eTC 190 | 128 x 144 | `0000 000x` | http://www.pervasivedisplays.com/products/190
-eTC 260 | 128 x 232 | 0000 000x` | http://www.pervasivedisplays.com/products/260
+eTC 260 | 128 x 232 | `0000 000x` | http://www.pervasivedisplays.com/products/260
 eTC 271 Ma | 176 x 264 | `0000 000x` | http://www.pervasivedisplays.com/products/271b
 eTC 271 Mb | 176 x 264 | `0000 000x` | http://www.pervasivedisplays.com/products/271b
-iTC 215 | 208 x 112 | 1010 000x` | http://www.pervasivedisplays.com/products/215
+iTC 215 | 208 x 112 | `1010 000x` | http://www.pervasivedisplays.com/products/215
 iTC 287 | 296 x 128 | `0101 010x` | http://www.pervasivedisplays.com/products/287
 iTC 420 | 300 x 400 | `0101 010x` | http://www.pervasivedisplays.com/products/420
 iTC 287 BWR | 296 x 128 | `0101 010x` | http://www.pervasivedisplays.com/products/287
