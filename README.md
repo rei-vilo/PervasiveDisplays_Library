@@ -35,7 +35,7 @@ General documentation is available at [LCD_screen Library Suite](http://embedded
 
 Three options.
 
-##### Using the Boards Manager (recommended)
+##### 1. Using the Boards Manager (recommended)
 
 * Launch Energia 1.6.10E18.
 * Call the menu **Sketck > Include Library > Manage Libraires...**.
@@ -43,15 +43,15 @@ Three options.
 
 ![image](https://github.com/rei-vilo/PervasiveDisplays_Library/blob/master/Libraries.png)
 
-##### Using the ZIP file
+##### 2. Using the ZIP file
 
 * Download the ZIP file.
 * Call the menu **Sketch > Include Library > Add .ZIP Library...** 
 * Select the .ZIP file and click on **Install**.
 
+![image](https://github.com/rei-vilo/PervasiveDisplays_Library/blob/master/FileZIP.png)
 
-
-##### Using the ZIP file manually
+##### 3. Proceeding manually
 
 * Download the ZIP file.
 * Uncompress it.
