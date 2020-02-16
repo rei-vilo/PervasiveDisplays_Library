@@ -1,0 +1,32 @@
+{
+  "name": "PervasiveDisplays_Library",
+  "keywords": "display, e-paper",
+  "description": "Library for the Pervasive Displays EPD Extension Kit Gen 2 (EXT2) BoosterPack",
+  "homepage": "http://embeddedcomputing.weebly.com/lcd_screen-library-suite.html",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/rei-vilo/PervasiveDisplays_Library.git"
+  },
+  "dependencies":
+  [
+    {
+      "name": "Pervasive_EPD_BoosterPack2",
+      "version": ">=1.1.0"
+    }
+  ],
+  "frameworks": "energia",
+  "platforms":
+  [
+    "msp432",
+    "cc3200",
+    "tm4c",
+    "cc13x2",
+    "cc13xx",
+    "msp432e",
+    "msp432p",
+    "msp432r",
+  ],
+  "version": "1.2.3",
+  "license": "(c) and CC-BY-NC-SA"
+}
